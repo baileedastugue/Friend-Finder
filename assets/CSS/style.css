@@ -1,0 +1,16 @@
+#header {
+    background-image: url(../../images/catDog.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 45vw;
+    background-position: center;
+    z-index: -10;
+    position: relative;
+}
+
+.display-4 {
+    color: white;
+    position: absolute;
+    bottom: 1vw;
+    left: 10vw;
+}
