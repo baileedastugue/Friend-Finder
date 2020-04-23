@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Friend Finder</title>
-    <link rel="stylesheet" type="text/css" href="../../assets/CSS/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/CSS/style.css"> -->
     <link rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet"
@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-12">
                 <h1>About You</h1>
-                <form>
+                <form method="POST" role="form">
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" class="form-control" id="name">
@@ -32,33 +32,33 @@
                         <input type="text" class="form-control" id="picture">
                     </div>
                     <div class="form-group" id="question1">
-                        <h4>Do you like eggs</h4>
+                        <h4>How long are you out of the house, most days?</h4>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="q1r1" value="1">
-                            <label class="form-check-label" for="q1r1">1</label>
+                            <label class="form-check-label" for="q1r1">0-2 hours</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="q1r2" value="2">
-                            <label class="form-check-label" for="q1r2">2</label>
+                            <label class="form-check-label" for="q1r2">3-5 hours</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="q1r3" value="3">
-                            <label class="form-check-label" for="q1r3">3</label>
+                            <label class="form-check-label" for="q1r3">1-9 hours</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="q1r4" value="4">
-                            <label class="form-check-label" for="q1r4">4</label>
+                            <label class="form-check-label" for="q1r4">10-12 hours</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="q1r5" value="5">
-                            <label class="form-check-label" for="q1r5">5</label>
+                            <label class="form-check-label" for="q1r5">12+ hours</label>
                         </div>
                     </div>
                     <div class="form-group" id="question2">
-                        <h4>Do you like eggs on a boat</h4>
+                        <h4>How active are you?</h4>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="q2r1" value="1">
-                            <label class="form-check-label" for="q2r1">1</label>
+                            <label class="form-check-label" for="q2r1">1 - an indoor pup</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="q2r2" value="2">
@@ -74,7 +74,7 @@
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="q2r5" value="5">
-                            <label class="form-check-label" for="q2r5">5</label>
+                            <label class="form-check-label" for="q2r5">5 - long walks every day</label>
                         </div>
                     </div>
                     <div class="form-group" id="question3">
@@ -146,6 +146,7 @@
                             <label class="form-check-label" for="q5r5">5</label>
                         </div>
                     </div>
+                    <button type="submit" id="submit-btn" class="btn btn-danger">Submit</button>
                 </form>
             </div>
         </div>
@@ -153,11 +154,28 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="/survey">Go to survey</a>
-                <a href="/api/friends">API Friends List</a>
+                <a href="/survey">Go to survey</a> | 
+                <a href="/api/friends">API Friends List</a> | 
                 <a href="#">GitHub Repo</a>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $("#submit-btn").on("click", function(event) {
+            event.preventDefault();
+            var newFriend = {
+                name: $("#name").val().trim(),
+                picture: $("#picture").val().trim()
+            }
+            $.post("/api/friends", newFriend)
+                .then(function(data) {
+                    console.log("survey.html", data);
+                })
+        })
+    
+    </script>
+
 </body>
 </html>
+
