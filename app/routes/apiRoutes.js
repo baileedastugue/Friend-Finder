@@ -21,12 +21,16 @@ module.exports = function(app) {
 
 
     function compareScores () {
-        var allScores = [];
-        console.log(friends[0].scores[1]);
-        // for (var i = 0; i < dogs.length; i++) {
-        //     for (var e = 0; e < dogs[i].scores.length; e++) {
-        //         console.log(dogs[i].scores[e]);
-        //     }
-        // }
+        var newFriendScores = friends[friends.length-1];
+        var differences = [];
+        for (var i = 0; i < dogs.length; i++) {
+            var indivDiff = 0;
+            for (var e = 0; e < dogs[i].scores.length; e++) {
+                var eachDiff = Math.abs(newFriendScores.scores[e]-dogs[i].scores[e]);
+                indivDiff += eachDiff;
+            }
+            differences.push(indivDiff);
+        }
+        console.log(differences);
     }
 }
