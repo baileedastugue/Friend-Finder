@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Friend Finder</title>
-    <!-- <link rel="stylesheet" type="text/css" href="../../assets/CSS/style.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/CSS/style.css"> -->
     <link rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet"
@@ -15,18 +15,43 @@
 <body>
     <div class="container">
         <div id="header">
-            <h1 class="display-4">Friend Finder</h1>
+            <h1 class="display-4">Furry Friend Finder</h1>
         </div>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-12">
+                                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Launch demo modal
+                </button> -->
+                
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Your furry match!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
                 <h1>About You</h1>
                 <form method="POST" role="form">
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" class="form-control" id="name">
                     </div>
+            
                     <div class="form-group">
                         <label for="picture">Your Picture</label>
                         <input type="text" class="form-control" id="picture">
@@ -34,120 +59,125 @@
                     <div class="form-group" id="question1">
                         <h4>How long are you out of the house, most days?</h4>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q1r1" value="1">
+                            <input class="form-check-input" type="radio" id="q1r1" name="question1" value="1">
                             <label class="form-check-label" for="q1r1">0-2 hours</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q1r2" value="2">
+                            <input class="form-check-input" type="radio" id="q1r2" name="question1" value="2">
                             <label class="form-check-label" for="q1r2">3-5 hours</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q1r3" value="3">
-                            <label class="form-check-label" for="q1r3">1-9 hours</label>
+                            <input class="form-check-input" type="radio" id="q1r3" name="question1" value="3">
+                            <label class="form-check-label" for="q1r3">6-9 hours</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q1r4" value="4">
+                            <input class="form-check-input" type="radio" id="q1r4" name="question1" value="4">
                             <label class="form-check-label" for="q1r4">10-12 hours</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q1r5" value="5">
+                            <input class="form-check-input" type="radio" id="q1r5" name="question1" value="5">
                             <label class="form-check-label" for="q1r5">12+ hours</label>
                         </div>
                     </div>
                     <div class="form-group" id="question2">
                         <h4>How active are you?</h4>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q2r1" value="1">
+                            <input class="form-check-input" type="radio" id="q2r1" value="1" name="question2">
                             <label class="form-check-label" for="q2r1">1 - An indoor pup</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q2r2" value="2">
+                            <input class="form-check-input" type="radio" id="q2r2" value="2" name="question2">
                             <label class="form-check-label" for="q2r2">2</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q2r3" value="3">
+                            <input class="form-check-input" type="radio" id="q2r3" value="3" name="question2">
                             <label class="form-check-label" for="q2r3">3</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q2r4" value="4">
+                            <input class="form-check-input" type="radio" id="q2r4" value="4" name="question2">
                             <label class="form-check-label" for="q2r4">4</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q2r5" value="5">
+                            <input class="form-check-input" type="radio" id="q2r5" value="5" name="question2">
                             <label class="form-check-label" for="q2r5">5 - An outdoor doggo </label>
                         </div>
                     </div>
                     <div class="form-group" id="question3">
                         <h4>What's your snug style?</h4>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q3r1" value="1">
+                            <input class="form-check-input" type="radio" id="q3r1" value="1" name="question3">
                             <label class="form-check-label" for="q3r1">1 - I need my space</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q3r2" value="2">
+                            <input class="form-check-input" type="radio" id="q3r2" value="2" name="question3">
                             <label class="form-check-label" for="q3r2">2</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q3r3" value="3">
+                            <input class="form-check-input" type="radio" id="q3r3" value="3" name="question3">
                             <label class="form-check-label" for="q3r3">3</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q3r4" value="4">
+                            <input class="form-check-input" type="radio" id="q3r4" value="4" name="question3">
                             <label class="form-check-label" for="q3r4">4</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q3r5" value="5">
+                            <input class="form-check-input" type="radio" id="q3r5" value="5" name="question3">
                             <label class="form-check-label" for="q3r5">5 - Give me the puppy love!</label>
                         </div>
                     </div>
                     <div class="form-group" id="question4">
-                        <h4>Do you get along with cats?</h4>
+                        <h4>Will you and your new furry friend be around cats?</h4>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q4r1" value="1">
-                            <label class="form-check-label" for="q4r1">1 - Not man's best friend</label>
+                            <input class="form-check-input" type="radio" id="q4r1" value="1" name="question4">
+                            <label class="form-check-label" for="q4r1">1 - Never! They're not man's best friend</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q4r2" value="2">
+                            <input class="form-check-input" type="radio" id="q4r2" value="2" name="question4">
                             <label class="form-check-label" for="q4r2">2</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q4r3" value="3">
+                            <input class="form-check-input" type="radio" id="q4r3" value="3" name="question4">
                             <label class="form-check-label" for="q4r3">3</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q4r4" value="4">
+                            <input class="form-check-input" type="radio" id="q4r4" value="4" name="question4">
                             <label class="form-check-label" for="q4r4">4</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q4r5" value="5">
-                            <label class="form-check-label" for="q4r5">5 - Any cat is my companion</label>
+                            <input class="form-check-input" type="radio" id="q4r5" value="5" name="question4">
+                            <label class="form-check-label" for="q4r5">5 - All cats are our companions</label>
                         </div>
                     </div>
                     <div class="form-group" id="question5">
                         <h4>What sized furry friend are you looking for?</h4>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q5r1" value="1">
+                            <input class="form-check-input" type="radio" id="q5r1" value="1" name="question5">
                             <label class="form-check-label" for="q5r1">1 - A purse-sized pooch</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q5r2" value="2">
+                            <input class="form-check-input" type="radio" id="q5r2" value="2" name="question5">
                             <label class="form-check-label" for="q5r2">2</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q5r3" value="3">
+                            <input class="form-check-input" type="radio" id="q5r3" value="3" name="question5">
                             <label class="form-check-label" for="q5r3">3</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q5r4" value="4">
+                            <input class="form-check-input" type="radio" id="q5r4" value="7" name="question5">
                             <label class="form-check-label" for="q5r4">4</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="q5r5" value="5">
+                            <input class="form-check-input" type="radio" id="q5r5" value="5" name="question5">
                             <label class="form-check-label" for="q5r5">5 - A big guy</label>
                         </div>
                     </div>
+                    <!-- young or old dog -->
+                    <!-- gets along with other dogs -->
+                    <!-- good in small spaces -->
+                    <!--  -->
                     <button type="submit" id="submit-btn" class="btn btn-danger">Submit</button>
                 </form>
+               
             </div>
         </div>
     </div>
@@ -155,7 +185,8 @@
         <div class="row">
             <div class="col-12">
                 <a href="/survey">Go to survey</a> | 
-                <a href="/api/friends">API Friends List</a> | 
+                <a href="/api/friends">API Human Friends List</a> | 
+                <a href="/api/dogs">API Dog Friends List</a> | 
                 <a href="#">GitHub Repo</a>
             </div>
         </div>
@@ -164,14 +195,23 @@
     <script type="text/javascript">
         $("#submit-btn").on("click", function(event) {
             event.preventDefault();
+            var q1 = $("input[name='question1']:checked").val();
+            var q2 = $("input[name='question2']:checked").val();
+            var q3 = $("input[name='question3']:checked").val();
+            var q4 = $("input[name='question4']:checked").val();
+            var q5 = $("input[name='question5']:checked").val();
             var newFriend = {
                 name: $("#name").val().trim(),
-                picture: $("#picture").val().trim()
+                picture: $("#picture").val().trim(),
+                scores: [q1,q2,q3, q4, q4]
             }
             $.post("/api/friends", newFriend)
                 .then(function(data) {
                     console.log("survey.html", data);
-                })
+                    $('#myModal').modal('show')
+
+                    
+            })
         })
     
     </script>

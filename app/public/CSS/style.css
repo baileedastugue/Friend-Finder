@@ -1,3 +1,10 @@
+.display-4 {
+    color: white;
+    position: absolute;
+    bottom: 1vw;
+    left: 10vw;
+}
+
 #header {
     background-image: url(../../images/catDog.jpg);
     background-size: contain;
@@ -8,9 +15,3 @@
     position: relative;
 }
 
-.display-4 {
-    color: white;
-    position: absolute;
-    bottom: 1vw;
-    left: 10vw;
-}
