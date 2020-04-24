@@ -203,15 +203,25 @@
             var newFriend = {
                 name: $("#name").val().trim(),
                 picture: $("#picture").val().trim(),
-                scores: [q1,q2,q3, q4, q4]
+                scores: [q1 ,q2, q3, q4, q5]
             }
+            // newFriend is the request sent to req.body
+            // the response (the function) is the res
             $.post("/api/friends", newFriend)
                 .then(function(data) {
-                    console.log("survey.html", data);
-                    $('#myModal').modal('show')
+                    // console.log("survey.html", data.name);
+                    $('#myModal .modal-body').html(data.name);
+                    // $('#myModal').modal('show');
+                    $("input[name='question1']").prop("checked", false);
+                    $("input[name='question2']").prop("checked", false);
+                    $("input[name='question3']").prop("checked", false);
+                    $("input[name='question4']").prop("checked", false);
+                    $("input[name='question5']").prop("checked", false);
+                    $("#name").val("");
+                    $("#picture").val("");
 
-                    
             })
+            return false;
         })
     
     </script>
