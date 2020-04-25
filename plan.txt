@@ -1,0 +1,50 @@
+survey:    
+    // 10 questions
+        // based on a scale of 1-5
+        // 1 - disagree; 5 - agree
+server.js:
+    // require:
+        // express
+        // path
+htmlroutes.js:
+    // two routes:
+        // GET route to "/survey"
+        // default route to homepage "/"
+apiroutes.js:
+    // two routes:
+        // GET route to "/api/friends"
+            // json of all possible friends
+        //POST route to "/api/friends"
+            // incoming survey results
+            // handles compatibility logic
+                // compare absolute value differences
+app/data/friends.js:
+    // save data in this as an array of obejects 
+    // each object: 
+        {
+            name: "",
+            photo: "",
+            scores: []
+        }
+after survey is complete:
+    // show results as a modal
+        // incl:
+            name
+            picture
+
+Backend:
+- server.js
+- package.json
+- package-lock.json & node_modules (which is automatically built when you run npm install)
+- .gitignore (which ignores the node_modules)
+- optional (.env)
+- db (optional);
+- MVC (optional);
+
+Frontend (aka client-side):
+- public
+    - HTML
+    - Assets
+        - CSS
+        - Client-side javascript (usually named script.js)
+        - Images
