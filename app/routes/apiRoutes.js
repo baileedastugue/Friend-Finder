@@ -51,6 +51,6 @@ module.exports = function(app) {
         for (var i = 0; i < matchArray.length; i++) {
             yourMatches.push(dogs[matchArray[i]]);
         }
-        console.log(yourMatches);
+        return yourMatches;
     }
 }

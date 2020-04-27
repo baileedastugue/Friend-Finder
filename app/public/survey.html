@@ -22,12 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                                <!-- Button trigger modal -->
-                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Launch demo modal
-                </button> -->
-                
-                <!-- Modal -->
+                               
                 <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -38,7 +33,7 @@
                         </button>
                         </div>
                         <div class="modal-body">
-                        ...
+                        
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -198,32 +193,33 @@
 
         $("#submit-btn").on("click", function(event) {
             event.preventDefault();
-            var q1 = $("input[name='question1']:checked").val();
-            var q2 = $("input[name='question2']:checked").val();
-            var q3 = $("input[name='question3']:checked").val();
-            var q4 = $("input[name='question4']:checked").val();
-            var q5 = $("input[name='question5']:checked").val();
             var newFriend = {
                 name: $("#name").val().trim(),
                 picture: $("#picture").val().trim(),
-                scores: [q1 ,q2, q3, q4, q5]
+                scores: []
             }
+            for (var i = 1; i < 6; i ++) {
+                newFriend.scores.push($("input[name='question" + i +"']:checked").val());
+            }
+            console.log(newFriend);
             // newFriend is the request sent to req.body
             // the response (the function) is the res
             $.post("/api/friends", newFriend)
                 .then(function(data) {
-                    // for (var i = 0; i < yourMatches.length; i ++) {
-                    //     console.log(i);
-                    // }
                     console.log(data);
-                    $('#myModal .modal-body').html(data.name);
+                    for (var i = 0; i < data.length; i++) {
+                        var div = $("<div>");
+                        div.append(data[i].name + "<br>");
+                        var img = $("<img>");
+                        img.attr("src", data[i].picture);
+                        div.append(img);
+                        $('#myModal .modal-body').append(div);
+                    }
                     $('#myModal').modal('show');
 
-                    $("input[name='question1']").prop("checked", false);
-                    $("input[name='question2']").prop("checked", false);
-                    $("input[name='question3']").prop("checked", false);
-                    $("input[name='question4']").prop("checked", false);
-                    $("input[name='question5']").prop("checked", false);
+                    for (var i = 1; i < 6; i ++) {
+                        $("input[name='question" + i +"']").prop("checked", false);
+                    }
                     $("#name").val("");
                     $("#picture").val("");
 
