@@ -3,6 +3,10 @@ var friends = require("../data/friends");
 
 module.exports = function(app) {
 // route to the API
+    app.get("/", function(req, res) {
+        res.json(dogs);
+    })
+
     app.get("/api/friends", function(req, res) {
         return res.json(friends);
     })
@@ -20,6 +24,7 @@ module.exports = function(app) {
         res.json(yourMatches);
         res.end();
     })
+
 
     function compareScores () {
         var differences = [];

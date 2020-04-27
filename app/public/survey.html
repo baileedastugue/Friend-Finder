@@ -180,7 +180,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="/survey">Go to survey</a> | 
+                <a href="/">Go to homepage</a> | 
                 <a href="/api/friends">API Human Friends List</a> | 
                 <a href="/api/dogs">API Dog Friends List</a> | 
                 <a href="https://github.com/baileedastugue/Friend-Finder">GitHub Repo</a>
@@ -189,8 +189,6 @@
     </div>
 
     <script type="text/javascript">
-       
-
         $("#submit-btn").on("click", function(event) {
             event.preventDefault();
             var newFriend = {
@@ -201,7 +199,6 @@
             for (var i = 1; i < 6; i ++) {
                 newFriend.scores.push($("input[name='question" + i +"']:checked").val());
             }
-            console.log(newFriend);
             // newFriend is the request sent to req.body
             // the response (the function) is the res
             $.post("/api/friends", newFriend)

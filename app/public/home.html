@@ -10,16 +10,51 @@
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./CSS/style.css">
 </head>
 <body>
     <div class="container">
+        <div id="header">
+            <h1 class="display-4">Furry Friend Finder</h1>
+        </div>
+    </div>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <a href="/survey">Go to survey</a>
-                <a href="/api/friends">API Friends List</a>
+                <div id="dog-container">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="/survey">Go to survey</a> | 
+                <a href="/api/friends">API Friends List</a> | 
+                <a href="/api/dogs">API Dog Friends List</a> | 
                 <a href="https://github.com/baileedastugue/Friend-Finder">GitHub Repo</a>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $.get("/api/dogs/", function (data) { 
+            for (var i = 0; i < data.length; i++) {
+                var card = $("<div class='card mx-auto'>");
+                var img = $("<img class='card-img-top' src='" + data[i].picture + "'>");
+                card.append(img);
+                // var cardBody = $("<div class='card-body'>");
+                var cardTitle = $("<h5 class='card-title'>" + data[i].name + "</h5>");
+                // cardBody.append(cardTitle);
+                card.append(cardTitle);
+                $("#dog-container").append(card);
+
+            }
+            
+        })
+    </script>
+    
+
 </body>
 </html>
