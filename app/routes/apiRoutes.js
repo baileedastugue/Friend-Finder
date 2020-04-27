@@ -14,19 +14,15 @@ module.exports = function(app) {
     app.post("/api/friends", function(req, res) {
         var newFriend = req.body;
         friends.push(newFriend);
-        compareScores();
+        var differences = compareScores();
+        var matchArray = findDoggos(differences);
+        var yourMatches = returnDoggos(matchArray);
         res.json(yourMatches);
         res.end();
     })
 
-    var differences = [];
-    var matchArray = [];
-    var yourMatches = [];
-
-
     function compareScores () {
-        differences = [];
-        matchArray = [];
+        var differences = [];
         var newFriendScores = friends[friends.length-1];
         for (var i = 0; i < dogs.length; i++) {
             var indivDiff = 0;
@@ -36,21 +32,22 @@ module.exports = function(app) {
             }
             differences.push(indivDiff);
         }
-        
-        findDoggos();
+        return differences;
     }
 
-    function findDoggos () {
+    function findDoggos (differences) {
+        var matchArray = [];
         var minDiff = Math.min.apply(Math, differences);
         for (var i = 0; i < differences.length; i++) {
             if (differences[i] === minDiff) {
                 matchArray.push(i);
             }
         }
-        returnDoggos();
+        return matchArray;
     }
 
-    function returnDoggos () {
+    function returnDoggos (matchArray) {
+        var yourMatches = [];
         for (var i = 0; i < matchArray.length; i++) {
             yourMatches.push(dogs[matchArray[i]]);
         }
